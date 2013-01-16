@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Messenger;
 import android.widget.TextView;
-  
+
 public class HomeActivity  extends Activity {
 
-	private TextView text;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

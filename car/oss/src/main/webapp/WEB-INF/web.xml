@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <display-name>gulfoss</display-name>
+    <description>gulf oss</description>
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>gulf.root</param-value>
+    </context-param>
+   <filter>
+    <filter-name>nutz</filter-name>
+    <filter-class>org.nutz.mvc.NutFilter</filter-class>
+    <init-param>
+        <param-name>modules</param-name>
+        <param-value>com.gulf.web.controller.MainModule</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>nutz</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+</web-app>

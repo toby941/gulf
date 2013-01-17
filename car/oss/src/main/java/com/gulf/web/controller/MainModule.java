@@ -1,15 +1,17 @@
+/*
+ * Copyright 2013 5idea gulf team
+ */
 package com.gulf.web.controller;
 
-import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.Encoding;
 import org.nutz.mvc.annotation.Modules;
-import org.nutz.mvc.annotation.Ok;
 
+/**
+ * MainModule.java
+ * 
+ * @author ryenlea
+ */
 @Modules(scanPackage = true)
+@Encoding(input = "UTF-8", output = "UTF-8")
 public class MainModule {
-
-    @At("/index")
-    @Ok("jsp:jsp.index")
-    public void index() {
-    }
-
 }

@@ -7,3 +7,5 @@ car/oss/.classpath
 car/oss/.project
 car/oss/.settings/
 car/oss/target/
+*~
+*.swp

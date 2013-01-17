@@ -6,6 +6,8 @@ package com.gulf.web.controller.admin;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.nutz.log.Log;
+import org.nutz.log.Logs;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.Ok;
 
@@ -16,10 +18,11 @@ import org.nutz.mvc.annotation.Ok;
  */
 @At("/admin")
 public class AdminModule {
-
-    @At("/main")
+	private static final Log log = Logs.getLog(AdminModule.class);
+	@At("/main")
     @Ok("jsp:jsp.admin.test")
     public String main() {
+		log.error("报个错看看");
         return "test";
     }
 

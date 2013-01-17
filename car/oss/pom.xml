@@ -32,6 +32,11 @@
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>1.2.16</version>
+    </dependency>
     <!-- SERVLET API -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -123,4 +128,29 @@
       </resource>
     </resources>
   </build>
+  <profiles>
+	<profile>
+		<id>dev</id>
+		<properties>
+			<jdbc.url>jdbc:mysql://192.168.1.247:3306/airad_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+			<jdbc.username>remote</jdbc.username>
+			<jdbc.password>123456</jdbc.password>
+			<log4j.name>log4j_dev.properties</log4j.name>
+			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+		</properties>
+	</profile>
+	<profile>
+		<id>test</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+			<jdbc.url>jdbc:mysql://192.168.1.247:3306/airad_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+			<jdbc.username>remote</jdbc.username>
+			<jdbc.password>123456</jdbc.password>
+			<log4j.name>log4j_dev.properties</log4j.name>
+			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+		</properties>
+	</profile>
+  </profiles>
 </project>

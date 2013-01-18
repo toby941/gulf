@@ -9,7 +9,9 @@ import java.util.Map;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
+import org.nutz.mvc.annotation.POST;
 
 /**
  * AdminModule.java
@@ -18,11 +20,24 @@ import org.nutz.mvc.annotation.Ok;
  */
 @At("/admin")
 public class AdminModule {
-	private static final Log log = Logs.getLog(AdminModule.class);
-	@At("/main")
+    private static final Log log = Logs.getLog(AdminModule.class);
+
+    @At("/login")
+    @Ok("jsp:jsp.admin.login")
+    @GET
+    public void login() {
+    }
+
+    @At("/login")
+    @Ok("redirect:/admin/main")
+    @POST
+    public String doLogin() {
+    }
+
+    @At("/main")
     @Ok("jsp:jsp.admin.test")
     public String main() {
-		log.error("报个错看看");
+        log.error("报个错看看");
         return "test";
     }
 

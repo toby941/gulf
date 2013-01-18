@@ -16,8 +16,6 @@ public class AddRecordActivity extends SherlockFragmentActivity{
 		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		
-		
 	}
 
 	

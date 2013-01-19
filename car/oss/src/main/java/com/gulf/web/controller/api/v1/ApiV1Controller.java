@@ -15,7 +15,7 @@ import org.nutz.mvc.annotation.Ok;
  * @author ryenlea
  */
 @At("/api/v1")
-public class ApiV1Module {
+public class ApiV1Controller {
 
     @At("/test")
     @Ok("json")

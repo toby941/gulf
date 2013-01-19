@@ -28,16 +28,10 @@
 </style>
 </head>
 <body>
-    <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    <form class="form-signin" action="/admin/login" method="post">
+        <h2 class="form-signin-heading">登录</h2>
+        <input type="text" class="input-block-level" placeholder="Email address" id="username" name="username">
+        <input type="password" class="input-block-level" placeholder="Password" id="password" name="password">
+        <button class="btn btn-large btn-primary" type="submit">登录</button>
       </form>
 </body>
-<script type="text/javascript">
-var test = 'test';
-</script>

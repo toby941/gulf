@@ -12,7 +12,7 @@ import org.nutz.mvc.annotation.Ok;
  * 
  * @author ryenlea
  */
-public class HomeModule {
+public class HomeController {
 
     @At("/")
     @GET

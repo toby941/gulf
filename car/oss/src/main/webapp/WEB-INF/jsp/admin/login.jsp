@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.gulf.Init" %>
 <head>
 <style type="text/css">
   .form-signin {
@@ -29,9 +30,9 @@
 </head>
 <body>
     <form class="form-signin" action="/admin/login" method="post">
-        <h2 class="form-signin-heading">登录</h2>
-        <input type="text" class="input-block-level" placeholder="Email address" id="username" name="username">
-        <input type="password" class="input-block-level" placeholder="Password" id="password" name="password">
+        <h2 class="form-signin-heading"><%= Init.p.getProperty("admin-login") %></h2>
+        <input type="text" class="input-block-level" placeholder="用户名" id="username" name="username">
+        <input type="password" class="input-block-level" placeholder="口令" id="password" name="password">
         <button class="btn btn-large btn-primary" type="submit">登录</button>
       </form>
 </body>

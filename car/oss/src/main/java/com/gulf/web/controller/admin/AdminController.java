@@ -23,8 +23,10 @@ import org.nutz.mvc.annotation.Param;
 import org.nutz.mvc.view.JspView;
 import org.nutz.mvc.view.ViewWrapper;
 
-import com.gulf.domain.Test;
-import com.gulf.service.TestService;
+import com.gulf.constants.Constants;
+import com.gulf.domain.Admin;
+import com.gulf.service.AdminService;
+import com.gulf.web.UserContext;
 
 /**
  * AdminModule.java
@@ -38,7 +40,7 @@ public class AdminController {
     private static final Log log = Logs.getLog(AdminController.class);
 
     @Inject
-    private TestService testService;
+    private AdminService adminService;
 
     @At("/login")
     @Ok("jsp:jsp.admin.login")
@@ -50,10 +52,12 @@ public class AdminController {
     @Ok("redirect:/admin/main")
     @POST
     public View doLogin(@Param("username") String username, @Param("password") String password, HttpServletRequest req) {
-        Test admin = testService.login(username, password);
+        Admin admin = adminService.login(username, password);
         if (admin != null) {
-            req.getSession().setAttribute("admin", admin);
-            return new ViewWrapper(new JspView("jsp.admin.test"), admin);
+        	UserContext uc = new UserContext();
+        	uc.setAdmin(admin);
+            req.getSession().setAttribute(Constants.USER_SESSION_KEY, uc);
+            return null;
         }
         else {
             req.setAttribute("error", "登录失败");

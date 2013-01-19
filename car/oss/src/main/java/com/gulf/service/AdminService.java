@@ -5,14 +5,14 @@ package com.gulf.service;
 
 import org.nutz.dao.Cnd;
 
-import com.gulf.domain.Test;
+import com.gulf.domain.Admin;
 
 /**
  * TestService.java
  *
  * @author ryenlea
  */
-public class TestService extends BaseService {
+public class AdminService extends BaseService {
     /**
      * 管理员登录
      * 
@@ -20,9 +20,9 @@ public class TestService extends BaseService {
      * @param password
      * @return
      */
-    public Test login(String username, String password) {
+    public Admin login(String username, String password) {
 
-        Cnd condition = Cnd.where("username", "=", username).and("password", "=", password);
-        return findByCondition(Test.class, condition);
+        Cnd condition = Cnd.where("name", "=", username).and("password", "=", password);
+        return findByCondition(Admin.class, condition);
     }
 }

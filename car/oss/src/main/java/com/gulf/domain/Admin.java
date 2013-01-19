@@ -8,7 +8,7 @@ import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 
 @Table("test")
-public class Test implements Serializable {
+public class Admin implements Serializable {
 
     private static final long serialVersionUID = -7846661741717372626L;
 	

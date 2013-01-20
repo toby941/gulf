@@ -1,16 +1,16 @@
 <resources>
           
-    <string-array name="oilNumType">
-        <item>90#无铅汽油</item>
-        <item>92#无铅汽油</item>
-        <item>93#无铅汽油</item>
-        <item>95#无铅汽油</item>
-        <item>97#无铅汽油</item>
-        <item>98#无铅汽油</item>
-        <item>93#乙醇汽油</item>
-        <item>95#乙醇汽油</item>
-        <item>97#乙醇汽油</item>
-        <item>0#柴油</item>
+    <string-array name="oilNumTypeAndPrice">
+        <item>90#无铅汽油,7.1</item>
+        <item>92#无铅汽油,7.5</item>
+        <item>93#无铅汽油,8.2</item>
+        <item>95#无铅汽油,8.4</item>
+        <item>97#无铅汽油,8.7</item>
+        <item>98#无铅汽油,9.2</item>
+        <item>93#乙醇汽油,8.1</item>
+        <item>95#乙醇汽油,8.6</item>
+        <item>97#乙醇汽油,9.5</item>
+        <item>0#柴油,6.5</item>
     </string-array>
 
 </resources>

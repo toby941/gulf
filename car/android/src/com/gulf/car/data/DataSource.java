@@ -9,7 +9,15 @@ import com.gulf.car.model.MetaRecord;
  */
 public interface DataSource {
 
-	void wirteRecord(float money, long kilometers);
+	/**
+	 * 增加一条记录
+	 * @param date 时间
+	 * @param oilNum 油号
+	 * @param charge 金额
+	 * @param price 单价
+	 * @param distance 里程数
+	 */
+	boolean wirteRecord(String date, String oilNum ,float charge, float price, long distance);
 	
 	List<MetaRecord> readRecords(); 
 }

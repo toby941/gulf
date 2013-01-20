@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
-<% boolean isLogin = false; %>
+<%@ page import="com.gulf.constants.Constants" %>
+<% boolean isLogin = session.getAttribute(Constants.USER_SESSION_KEY) != null; %>
 <!DOCTYPE html>
 <html lang="en">
   <head>

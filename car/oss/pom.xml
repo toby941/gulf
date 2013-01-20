@@ -132,10 +132,9 @@
 	<profile>
 		<id>dev</id>
 		<properties>
-			<jdbc.url>jdbc:mysql://192.168.1.247:3306/airad_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+			<jdbc.url>jdbc:mysql://ryimg.com:3306/bigbang_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
 			<jdbc.username>remote</jdbc.username>
 			<jdbc.password>123456</jdbc.password>
-			<log4j.name>log4j_dev.properties</log4j.name>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 		</properties>
 	</profile>
@@ -145,10 +144,9 @@
 			<activeByDefault>true</activeByDefault>
 		</activation>
 		<properties>
-			<jdbc.url>jdbc:mysql://192.168.1.247:3306/airad_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+			<jdbc.url>jdbc:mysql://ryimg.com:3306/bigbang_test?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
 			<jdbc.username>remote</jdbc.username>
 			<jdbc.password>123456</jdbc.password>
-			<log4j.name>log4j_dev.properties</log4j.name>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 		</properties>
 	</profile>

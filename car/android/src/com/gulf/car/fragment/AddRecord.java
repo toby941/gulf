@@ -13,6 +13,8 @@ import com.gulf.car.R;
 
 public class AddRecord extends SherlockFragment{
 
+	
+	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
@@ -37,6 +39,11 @@ public class AddRecord extends SherlockFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {		
 		return inflater.inflate(R.layout.record_add, null);
+	}
+	
+	public static AddRecord getInstance()
+	{
+		return new AddRecord();
 	}
 
 }

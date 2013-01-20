@@ -1,8 +1,15 @@
 <resources>
 
     <string name="app_name">车管家</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="date_title">日期：</string>
+    <string name="date_hint">请输入当天时间</string>
+    <string name="oilNum_title">油号：</string>
+    <string name="oilNum_hint">请选择油耗</string>
+    <string name="charge_title">金额：</string>
+    <string name="charge_hint">请输入金额</string>
+    <string name="price_title">单价：</string>
+    <string name="distance_title">里程：</string>
+    <string name="distance_hint">请输入里程</string>
+    
 
 </resources>

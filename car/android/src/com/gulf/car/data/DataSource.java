@@ -11,5 +11,5 @@ public interface DataSource {
 
 	void wirteRecord(float money, long kilometers);
 	
-	List<MetaRecord> readRecords();
+	List<MetaRecord> readRecords(); 
 }

@@ -1,0 +1,16 @@
+<resources>
+          
+    <string-array name="oilNumType">
+        <item>90#无铅汽油</item>
+        <item>92#无铅汽油</item>
+        <item>93#无铅汽油</item>
+        <item>95#无铅汽油</item>
+        <item>97#无铅汽油</item>
+        <item>98#无铅汽油</item>
+        <item>93#乙醇汽油</item>
+        <item>95#乙醇汽油</item>
+        <item>97#乙醇汽油</item>
+        <item>0#柴油</item>
+    </string-array>
+
+</resources>

@@ -18,12 +18,12 @@
 		    android:layout_centerVertical="true"
 		    android:text="@string/date_title"/>
         <EditText 
-		    android:id="@+id/dateView" 
+		    android:id="@+id/dateView"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_toRightOf="@+id/dateView_title"
 		    android:hint="@string/date_hint"
-		    android:enabled="false"
+		    android:focusable="false"
 		    android:clickable="true"/>
     </RelativeLayout>
     
@@ -38,14 +38,11 @@
 		    android:layout_alignParentLeft="true"
 		    android:layout_centerVertical="true"
 		    android:text="@string/oilNum_title"/>
-        <EditText 
+        <Spinner 
 		    android:id="@+id/oilNum" 
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_toRightOf="@+id/oilNum_title"
-		    android:hint="@string/oilNum_hint"
-		    android:enabled="false"
-		    android:clickable="true"/>
+		    android:layout_toRightOf="@+id/oilNum_title"/>
     </RelativeLayout>
     
 	<RelativeLayout

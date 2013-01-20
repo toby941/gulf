@@ -11,5 +11,6 @@
     <string name="distance_title">里程：</string>
     <string name="distance_hint">请输入里程</string>
     
-
+	<string name="menu_submit">提交</string>
+    
 </resources>

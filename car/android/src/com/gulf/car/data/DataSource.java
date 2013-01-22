@@ -9,6 +9,7 @@ import com.gulf.car.model.MetaRecord;
  */
 public interface DataSource {
 
+	public static final String BROADCAST_DATA_CHANGED = "com.gulf.car.data.changed";
 	/**
 	 * 增加一条记录
 	 * @param date 时间

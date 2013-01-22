@@ -12,5 +12,9 @@
     <string name="distance_hint">请输入里程</string>
     
 	<string name="menu_submit">提交</string>
+	
+	<string name="list_title_distance">行驶里程数</string>
+	<string name="list_title_price">花费</string>
+    <string name="list_title_date">日期</string>
     
 </resources>

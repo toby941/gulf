@@ -1,5 +1,9 @@
 <resources>
-          
+
+    <string-array name="tabs">
+        <item>添加</item>
+        <item>历史</item>
+    </string-array>
     <string-array name="oilNumTypeAndPrice">
         <item>90#无铅汽油,7.1</item>
         <item>92#无铅汽油,7.5</item>

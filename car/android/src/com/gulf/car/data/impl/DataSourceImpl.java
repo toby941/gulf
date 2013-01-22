@@ -1,10 +1,13 @@
 package com.gulf.car.data.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -17,9 +20,12 @@ public class DataSourceImpl implements DataSource {
 
 	private SQLiteDatabase database;
 	private MySqlOpenHelper dbHelper;
-	private static final String[] ALL_COLUMNS = { };
+	private static final String[] ALL_COLUMNS = { 
+		Table.ID, Table.DATE, Table.CHARGE, Table.PRICE, Table.DISTANCE};
+	private Context context;
 
 	public DataSourceImpl(Context context) {
+		this.context = context;
 		dbHelper = new MySqlOpenHelper(context);
 	}
 
@@ -31,52 +37,30 @@ public class DataSourceImpl implements DataSource {
 		dbHelper.close();
 	}
 
-	/*public void createComment(String comment) {
-		open();
-		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
-		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
-				values);
-		close();
-		return newComment;
-	}
-
-	public void deleteComment(Comment comment) {
-		long id = comment.getId();
-		System.out.println("Comment deleted with id: " + id);
-		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
-				+ " = " + id, null);
-	}
-
-	public List<Comment> getAllComments() {
-		List<Comment> comments = new ArrayList<Comment>();
-
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-				allColumns, null, null, null, null, null);
-
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Comment comment = cursorToComment(cursor);
-			comments.add(comment);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		return comments;
-	}
-
-	private Comment cursorToComment(Cursor cursor) {
-		Comment comment = new Comment();
-		comment.setId(cursor.getLong(0));
-		comment.setComment(cursor.getString(1));
-		return comment;
-	}*/
-
-
 	@Override
 	public List<MetaRecord> readRecords() {
-		// TODO Auto-generated method stub
-		return null;
+		open();
+		Cursor cursor = database.query(Table.NAME, ALL_COLUMNS, null, null, null, null, Table.DISTANCE);
+		List<MetaRecord> list = new ArrayList<MetaRecord>();
+		cursor.moveToFirst();
+		while(cursor.moveToNext())
+		{
+			list.add(generateRecord(cursor));
+		}
+		cursor.close();
+		close();
+		return list;
+	}
+	
+	private MetaRecord generateRecord(Cursor cursor)
+	{
+		MetaRecord record = new MetaRecord();
+		record.setId(cursor.getString(0));
+		record.setTimeByStr(cursor.getString(1));
+		record.setCharge(cursor.getFloat(2));
+		record.setPrice(cursor.getFloat(3));
+		record.setDistance(cursor.getLong(4));
+		return record;
 	}
 
 	@Override
@@ -92,6 +76,7 @@ public class DataSourceImpl implements DataSource {
 			values.put(Table.PRICE, price);
 			values.put(Table.DISTANCE, distance);
 			long insertId = database.insert(Table.NAME, null, values);
+			notifyDataChanged();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,5 +86,11 @@ public class DataSourceImpl implements DataSource {
 			close();
 		}
 	}
-
+	
+	private void notifyDataChanged()
+	{
+		Intent intent = new Intent();
+		intent.setAction(BROADCAST_DATA_CHANGED);
+		context.sendBroadcast(intent); 
+	}
 }

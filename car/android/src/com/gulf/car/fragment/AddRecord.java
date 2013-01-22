@@ -66,7 +66,6 @@ public class AddRecord extends SherlockFragment{
 	}
 	
 	
-	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		ArrayAdapter<String> adapter = 

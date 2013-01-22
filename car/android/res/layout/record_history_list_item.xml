@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+	
+    <TextView 
+        android:id="@+id/title_date"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginRight="8dp"
+    	android:text="@string/list_title_date"/>
+    
+    <TextView 
+        android:id="@+id/record_date"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_toRightOf="@+id/title_date"/>
+    
+    <TextView 
+        android:id="@+id/title_distance"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="@string/list_title_distance"
+    	android:layout_marginRight="8dp"
+    	android:layout_below="@+id/title_date"
+    	android:layout_marginTop="10dp"/>
+	
+    <TextView 
+        android:id="@+id/record_distance"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_toRightOf="@+id/title_distance"
+    	android:layout_alignBottom="@+id/title_distance"/>
+	
+    <TextView 
+        android:id="@+id/title_price"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="@string/list_title_price"
+    	android:layout_marginRight="8dp"
+    	android:layout_toRightOf="@+id/record_distance"
+    	android:layout_alignBottom="@+id/title_distance"/>
+    
+    <TextView 
+        android:id="@+id/record_price"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_toRightOf="@+id/title_price"
+    	android:layout_alignBottom="@+id/title_distance"/>
+</RelativeLayout>

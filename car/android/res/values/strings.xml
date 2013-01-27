@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">车管家</string>
+    
     <string name="date_title">日期：</string>
     <string name="date_hint">请输入当天时间</string>
     <string name="oilNum_title">油号：</string>
@@ -10,6 +11,12 @@
     <string name="price_title">单价：</string>
     <string name="distance_title">里程：</string>
     <string name="distance_hint">请输入里程</string>
+    
+    <string name="oilConsumption_title">百公里油耗：</string>
+    <string name="current_distance_title">当前里程：</string>
+    <string name="per_kilo_charge_title">每公里花费：</string>
+    <string name="daily_cost_title">每天行驶成本：</string>
+    <string name="daily_distance_title">每天行驶里程：</string>
     
 	<string name="menu_submit">提交</string>
 	

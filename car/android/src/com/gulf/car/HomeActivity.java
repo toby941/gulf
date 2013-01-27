@@ -14,12 +14,14 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.gulf.car.data.DataSource;
 import com.gulf.car.fragment.AddRecord;
 import com.gulf.car.fragment.History;
+import com.gulf.car.fragment.Stat;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class HomeActivity extends SherlockFragmentActivity {
 	
 	private AddRecord addRecordFragment;
 	private History historyFragment;
+	private Stat statFragment;
 	private BroadcastReceiver receiver;
 	
 	@Override
@@ -91,6 +93,11 @@ public class HomeActivity extends SherlockFragmentActivity {
     				historyFragment = History.getInstance();
     				return historyFragment;
     			}
+        		case 2:
+        		{
+        			statFragment = Stat.getInstance();
+        			return statFragment;
+        		}
         	}
         	return null;
         }

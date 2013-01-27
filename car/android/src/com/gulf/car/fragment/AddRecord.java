@@ -8,6 +8,7 @@ import java.util.Date;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.ShareActionProvider;
 import com.gulf.car.R;
 import com.gulf.car.data.DataSource;
 import com.gulf.car.data.impl.DataSourceImpl;
@@ -37,6 +39,7 @@ public class AddRecord extends SherlockFragment{
 	private EditText priceView;
 	private EditText distanceView;
 	private EditText chargeView;
+	private ShareActionProvider mShareActionProvider;
 	
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd"); 
 	private static final DecimalFormat NUM_FORMAT = new DecimalFormat("00");
@@ -104,6 +107,26 @@ public class AddRecord extends SherlockFragment{
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.add_record, menu);
+		
+		// Locate MenuItem with ShareActionProvider
+	    MenuItem item = menu.findItem(R.id.menu_item_share);
+
+	    // Fetch and store ShareActionProvider
+	    mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+	    
+	    setShareIntent();
+	}
+	
+	// Call to update the share intent
+	private void setShareIntent() {
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+		shareIntent.setType("text/plain");
+		
+	    if (mShareActionProvider != null) {
+	        mShareActionProvider.setShareIntent(shareIntent);
+	    }
 	}
 
 	@Override

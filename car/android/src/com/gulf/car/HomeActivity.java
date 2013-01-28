@@ -52,6 +52,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 			@Override
 			public void onReceive(Context context, Intent intent) {
 				historyFragment.changed();
+				statFragment.calculate();
 			}
 		};
 	}

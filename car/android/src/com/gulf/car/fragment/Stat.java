@@ -52,14 +52,20 @@ public class Stat extends SherlockFragment {
 		return v;
 	}
 	
+	public void onStart()
+	{
+		calculate();
+		super.onStart();
+	}
+	
 	/**
 	 * 统计计算
 	 */
-	public void calucute()
+	public void calculate()
 	{
 		recordList = carDataSource.readRecords();
 		List<DateFuel> statList = new ArrayList<DateFuel>(); 
-		for(int i = 0; i <= recordList.size(); i++)
+		for(int i = 0; i < recordList.size(); i++)
 		{
 			MetaRecord metaRecord = recordList.get(i);
 			if(statList.isEmpty() || metaRecord.getTime().after(recordList.get(i - 1).getTime()))
@@ -85,7 +91,7 @@ public class Stat extends SherlockFragment {
 		{
 			float allCharge = 0;
 			float allOilConsumption = 0;
-			for(int i = 0; i <= statList.size(); i++)
+			for(int i = 0; i < statList.size(); i++)
 			{
 				if(i - 1 != statList.size())
 				{
@@ -104,6 +110,13 @@ public class Stat extends SherlockFragment {
 			float v3 = allCharge / days;
 			//每天行驶里程
 			float v4 = distaceDiff / days;
+			
+			oilConsumption.setText(v1 + "");
+			current_distance.setText(statList.get(statList.size() - 1).distance + "");
+			per_kilo_charge.setText(v2 + "");
+			daily_distance.setText(v3 + "");
+			daily_cost.setText(v4 + "");
+			
 		}
 	}
 	

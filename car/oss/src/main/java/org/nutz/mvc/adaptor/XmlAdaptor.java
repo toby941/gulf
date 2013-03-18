@@ -9,7 +9,7 @@ public class XmlAdaptor extends PairAdaptor {
 
     @Override
     protected ParamInjector evalInjector(Type type, Param param) {
-        return new XmlInjector(type, null);
+        return new XmlInjector(type, param.value());
     }
 
 }

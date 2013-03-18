@@ -19,8 +19,7 @@ public class XmlInjector implements ParamInjector {
 
     @Override
     public Object get(ServletContext sc, HttpServletRequest req, HttpServletResponse resp, Object refer) {
-        // TODO Auto-generated method stub
-        return "1";
+        return name;
     }
 
 }

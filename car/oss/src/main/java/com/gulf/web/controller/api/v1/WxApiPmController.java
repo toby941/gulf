@@ -72,8 +72,8 @@ public class WxApiPmController {
     @POST
     @Ok("raw")
     @AdaptBy(type = XmlAdaptor.class)
-    public String handle(@Param("a") String xml, HttpServletRequest req) throws IOException {
-        System.out.println("request come in " + xml);
+    public String handle(@Param("aaa") String xml, @Param("bbb") String bbb, HttpServletRequest req) throws IOException {
+        System.out.println("request come in " + xml + "   " + bbb);
 
         String key = IOUtils.toString(req.getInputStream());
         System.out.println(key);

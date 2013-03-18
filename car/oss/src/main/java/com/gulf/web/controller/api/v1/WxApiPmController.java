@@ -1,10 +1,16 @@
 package com.gulf.web.controller.api.v1;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.IOUtils;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
+import org.nutz.mvc.adaptor.XmlAdaptor;
+import org.nutz.mvc.annotation.AdaptBy;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
@@ -35,8 +41,8 @@ public class WxApiPmController {
         String result =
                 MessageFormat.format("signature;{0},timestamp：{1}  nonce：{2}  echostr：{3}, code:{4},sh:{5}", signature,
                         timestamp, nonce, echostr, code, sh);
-        log.error(MessageFormat.format("signature;{0},timestamp：{1}  nonce：{2}  echostr：{3}, code:{4},sh:{5}",
-                signature, timestamp, nonce, echostr, code, sh));
+        // log.error(MessageFormat.format("signature;{0},timestamp：{1}  nonce：{2}  echostr：{3}, code:{4},sh:{5}",
+        // signature, timestamp, nonce, echostr, code, sh));
         if (sh.equals(signature)) {
             return echostr;
         }
@@ -45,26 +51,33 @@ public class WxApiPmController {
         }
     }
 
+    /**
+     * <xml> <br/>
+     * <ToUserName><![CDATA[toUser]]></ToUserName> <br/>
+     * <FromUserName><![CDATA[fromUser]]></FromUserName> <br/>
+     * <CreateTime>1348831860</CreateTime> <br/>
+     * <MsgType><![CDATA[text]]></MsgType> <br/>
+     * <Content><![CDATA[this is a test]]></Content><br/>
+     * <MsgId>1234567890123456</MsgId> <br/>
+     * </xml>
+     * 
+     * @param signature
+     * @param timestamp
+     * @param nonce
+     * @param echostr
+     * @return
+     * @throws IOException
+     */
     @At("/api/wx")
     @POST
     @Ok("raw")
-    public String handle(@Param("signature") String signature, @Param("timestamp") String timestamp,
-            @Param("nonce") String nonce, @Param("echostr") String echostr) {
-        String[] array = new String[]{token, timestamp, nonce};
-        Arrays.sort(array);
-        String code = array[0] + array[1] + array[2];
-        String sh = AddSHA1.sha1(code);
-        String result =
-                MessageFormat.format("signature;{0},timestamp：{1}  nonce：{2}  echostr：{3}, code:{4},sh:{5}", signature,
-                        timestamp, nonce, echostr, code, sh);
-        log.error(MessageFormat.format("signature;{0},timestamp：{1}  nonce：{2}  echostr：{3}, code:{4},sh:{5}",
-                signature, timestamp, nonce, echostr, code, sh));
-        if (sh.equals(signature)) {
-            return echostr;
-        }
-        else {
-            return result;
-        }
+    @AdaptBy(type = XmlAdaptor.class)
+    public String handle(@Param("a") String xml, HttpServletRequest req) throws IOException {
+        System.out.println("request come in " + xml);
+
+        String key = IOUtils.toString(req.getInputStream());
+        System.out.println(key);
+        return xml;
     }
 
     // http://weimp.sinaapp.com/api/wx?signature=06aa536f0916f83930b48451c32d65a0cb9396e2&echostr=5855573333999018911

@@ -62,6 +62,11 @@
     	<artifactId>commons-io</artifactId>
     	<version>2.3</version>
     </dependency>
+    <dependency>
+    	<groupId>org.jdom</groupId>
+    	<artifactId>jdom</artifactId>
+    	<version>2.0.1</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>gulf-oss</finalName>

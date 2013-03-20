@@ -6,7 +6,9 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.IOUtils;
+import org.nutz.ioc.annotation.InjectName;
+import org.nutz.ioc.loader.annotation.Inject;
+import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.mvc.adaptor.XmlAdaptor;
@@ -17,6 +19,7 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.POST;
 import org.nutz.mvc.annotation.Param;
 
+import com.gulf.service.WxService;
 import com.gulf.util.AddSHA1;
 
 /**
@@ -24,10 +27,14 @@ import com.gulf.util.AddSHA1;
  * 
  * @author toby
  */
-
+@IocBean
+@InjectName
 public class WxApiPmController {
     private static final Log log = Logs.getLog(WxApiPmController.class);
     public final static String token = "toby941";
+
+    @Inject
+    private WxService wxService;
 
     @At("/api/wx")
     @GET
@@ -72,12 +79,11 @@ public class WxApiPmController {
     @POST
     @Ok("raw")
     @AdaptBy(type = XmlAdaptor.class)
-    public String handle(@Param("aaa") String xml, @Param("bbb") String bbb, HttpServletRequest req) throws IOException {
-        System.out.println("request come in " + xml + "   " + bbb);
+    public String handle(@Param("ToUserName") String toUser, @Param("FromUserName") String fromUser,
+            @Param("CreateTime") String createTime, @Param("MsgType") String msgType, @Param("Content") String content,
+            HttpServletRequest req) throws IOException {
 
-        String key = IOUtils.toString(req.getInputStream());
-        System.out.println(key);
-        return xml;
+        return wxService.getTextResponse(toUser, "我是大山的回声：" + content);
     }
 
     // http://weimp.sinaapp.com/api/wx?signature=06aa536f0916f83930b48451c32d65a0cb9396e2&echostr=5855573333999018911

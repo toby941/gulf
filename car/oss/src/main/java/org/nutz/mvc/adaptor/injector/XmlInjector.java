@@ -34,7 +34,6 @@ public class XmlInjector implements ParamInjector {
     @Override
     public Object get(ServletContext sc, HttpServletRequest req, HttpServletResponse resp, Object refer) {
         try {
-            System.out.println("XmlInjector :" + refer);
             SAXBuilder sb = new SAXBuilder();
             Document doc;
             doc = sb.build(IOUtils.toInputStream((String) refer));

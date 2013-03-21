@@ -6,6 +6,8 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.nutz.ioc.annotation.InjectName;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
@@ -19,6 +21,8 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.POST;
 import org.nutz.mvc.annotation.Param;
 
+import com.gulf.service.Pm25Service;
+import com.gulf.service.WebService;
 import com.gulf.service.WxService;
 import com.gulf.util.AddSHA1;
 
@@ -35,6 +39,12 @@ public class WxApiPmController {
 
     @Inject
     private WxService wxService;
+
+    @Inject
+    private WebService webService;
+
+    @Inject
+    private Pm25Service pm25Service;
 
     @At("/api/wx")
     @GET
@@ -82,9 +92,25 @@ public class WxApiPmController {
     public String handle(@Param("ToUserName") String toUser, @Param("FromUserName") String fromUser,
             @Param("CreateTime") String createTime, @Param("MsgType") String msgType, @Param("Content") String content,
             HttpServletRequest req) throws IOException {
+        log.error("handle post from:" + req.getHeader("User-Agent") + "  toUser :" + toUser + "  fromUser:" + fromUser
+                + " content " + content);
+        String out = defaultOut;
+        content = StringUtils.trimToEmpty(content);
+        if (NumberUtils.isNumber(content)) {
+            out = webService.getMobileInfo(content);
+        }
+        // else if (pm25Service.isCity(content)) {
+        // out = pm25Service.getPmByCity(content);
+        // }
 
-        return wxService.getTextResponse(toUser, "我是大山的回声：" + content);
+        String result = wxService.getTextResponse(fromUser, toUser, out);
+        log.error("######handle post result:" + result);
+        return result;
     }
+    private static String defaultOut =
+            "欢迎使用闲置转让公众平台，目前店家提供服务如下：1.手机号码归属地查询，直接输入待查询手机号码 提交即可查询。 使用中有任何问题或建议可以 微博 @南京闲置转让";
+
+    // 2.全国主要城市PM2.5实时查询,直接输入城市名称，比如 “南京” 即可查询
 
     // http://weimp.sinaapp.com/api/wx?signature=06aa536f0916f83930b48451c32d65a0cb9396e2&echostr=5855573333999018911
     // &timestamp=1363338141&nonce=1363356904

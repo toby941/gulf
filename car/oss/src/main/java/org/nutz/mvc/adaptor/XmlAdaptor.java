@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.nutz.lang.Lang;
+import org.nutz.log.Log;
+import org.nutz.log.Logs;
 import org.nutz.mvc.adaptor.injector.XmlInjector;
 import org.nutz.mvc.annotation.Param;
 
 public class XmlAdaptor extends PairAdaptor {
+    private static final Log log = Logs.getLog(PairAdaptor.class);
 
     @Override
     protected ParamInjector evalInjector(Type type, Param param) {
@@ -22,7 +25,10 @@ public class XmlAdaptor extends PairAdaptor {
     public Object getReferObject(ServletContext sc, HttpServletRequest req, HttpServletResponse resp, String[] pathArgs) {
         // Read all as String
         try {
-            return IOUtils.toString(req.getInputStream());
+            String value = IOUtils.toString(req.getInputStream());
+            log.error("request xml: " + value);
+            System.err.println("request xml: " + value);
+            return value;
         }
         catch (Exception e) {
             throw Lang.wrapThrow(e);

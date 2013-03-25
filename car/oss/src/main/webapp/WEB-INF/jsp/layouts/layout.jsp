@@ -3,15 +3,15 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+<meta property="wb:webmaster" content="ca6fafd691f6874b" />
     <meta charset="utf-8">
-    <title>手机应用展示页面</title>
+    <title>微名片</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <link href="/style/bootstrap.css" rel="stylesheet">
-    <link href="/style/choosen.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -37,13 +37,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">手机应用展示页面</a>
+          <a class="brand" href="#">微名片</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">首页</a></li>
               <li><a href="#about">关于</a></li>
               <li><a href="/admin/login">后台</a></li>
+              <% if(session.getAttribute("user")!=null){ %>
+                 <li><img alt="${ user.screenName}" src="${user.profileImageUrl}" />${user.screenName}</li>
+              <% } %>
+               <% if(session.getAttribute("user")==null){ %>
+               <li><a href="${obj.weibologin}"><img alt="微博登陆" src="/images/loginbtn_02.png" > </a></li>
+               <% } %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -51,7 +58,6 @@
     </div>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="/js/choose.jquery.js"></script>
 
     <div class="container-fluid">
       <div class="row-fluid">

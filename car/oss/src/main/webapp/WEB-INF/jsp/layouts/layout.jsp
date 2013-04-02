@@ -42,13 +42,14 @@
           <a class="brand" href="#">微名片</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">首页</a></li>
+              <li class="active"><a href="/">首页</a></li>
+               <li><a href="/weibosearch">微博搜索</a></li>
               <li><a href="#about">关于</a></li>
               <li><a href="/admin/login">后台</a></li>
               <% if(session.getAttribute("user")!=null){ %>
                  <li><img alt="${ user.screenName}" src="${user.profileImageUrl}" />${user.screenName}</li>
               <% } %>
-               <% if(session.getAttribute("user")==null){ %>
+               <% if(session.getAttribute("user")==null&&pageContext.findAttribute("obj").toString().contains("weibologin")){ %>
                <li><a href="${obj.weibologin}"><img alt="微博登陆" src="/images/loginbtn_02.png" > </a></li>
                <% } %>
             </ul>

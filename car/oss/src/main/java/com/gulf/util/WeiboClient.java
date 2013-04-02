@@ -1,7 +1,9 @@
 package com.gulf.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.httpclient.Cookie;
@@ -42,19 +44,32 @@ public class WeiboClient {
         client.getHostConfiguration().setHost(LOGON_SITE, LOGON_PORT);
         String ajaxLoginUrl = Login(client, preLogin(client));
         String uniqueid = ajaxLogin(client, ajaxLoginUrl);
-        getHomePage(client, searchURL);
+        getContent(client, searchURL);
 
+    }
+
+    public static HttpClient getLoginClient() throws HttpException, IOException, Exception {
+        HttpClient client = new HttpClient();
+        client.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF8");
+        // 原先采用自己合并COOKIE，但是出现问题，用此方法OK
+        DefaultHttpParams.getDefaultParams().setBooleanParameter(HttpMethodParams.SINGLE_COOKIE_HEADER, true);
+        client.getParams().setParameter(HttpMethodParams.USER_AGENT,
+                "Mozilla/5.0 (X11; U; Linux i686; zh-CN; rv:1.9.1.2) Gecko/20090803 Fedora/3.5.2-2.fc11 Firefox/3.5.2");
+        client.getHostConfiguration().setHost(LOGON_SITE, LOGON_PORT);
+        String ajaxLoginUrl = Login(client, preLogin(client));
+        String uniqueid = ajaxLogin(client, ajaxLoginUrl);
+        return client;
     }
 
     /**
      * 获取用户的主页
      * 
      * @param client
-     * @param homePageUrl
+     * @param url
      * @throws Exception
      */
-    public static void getHomePage(HttpClient client, String homePageUrl) throws Exception {
-        GetMethod get = new GetMethod(homePageUrl);
+    public static void getContent(HttpClient client, String url) throws Exception {
+        GetMethod get = new GetMethod(url);
         try {
             client.executeMethod(get);
         }
@@ -65,16 +80,38 @@ public class WeiboClient {
             e.printStackTrace();
         }
         String response = get.getResponseBodyAsString();
-        System.out.println(response);
-        readByHtml(response);
+        readBySearchHtml(response);
     }
 
-    public static void readByHtml(String content) throws Exception {
+    public static String getContent(String url) throws Exception {
+        HttpClient client = getLoginClient();
+        GetMethod get = new GetMethod(url);
+        try {
+            client.executeMethod(get);
+        }
+        catch (HttpException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        String response = get.getResponseBodyAsString();
+        return response;
+    }
+
+    /**
+     * 对 http://s.weibo.com/user/&work=%E7%BB%AB%E8%87%B4&page=2 的html响应做解析 返回搜索结果的uid 集合
+     * 
+     * @param content
+     * @return
+     * @throws Exception
+     */
+    public static List<String> readBySearchHtml(String content) throws Exception {
+        List<String> uidList = new ArrayList<String>();
         Parser myParser;
         myParser = Parser.createParser(content, "utf8");
         HtmlPage visitor = new HtmlPage(myParser);
         myParser.visitAllNodesWith(visitor);
-        // NodeFilter filter = new TagNameFilter("a");
         NodeFilter filter =
                 new CssSelectorNodeFilter("div[class=\"person_detail\"] p[class=\"person_name\"] a[uid=*.*]");
         NodeList allPersonList = visitor.getBody().extractAllNodesThatMatch(filter, true);
@@ -83,11 +120,12 @@ public class WeiboClient {
             if (node instanceof LinkTag) {
                 LinkTag tag = (LinkTag) node;
                 if (tag.getAttribute("title") != null) {
-                    System.out.println("title:" + tag.getAttribute("title") + "   uid:" + tag.getAttribute("uid"));
+                    uidList.add(tag.getAttribute("uid"));
                 }
             }
 
         }
+        return uidList;
     }
 
     /**
@@ -132,8 +170,6 @@ public class WeiboClient {
         printCookie(client);
         mergeCookie(client);
         printCookie(client);
-        System.out.println("preLogin结束response: " + response);
-        System.out.println("-------------preLogin结束--------------");
         return responseBodyToMap(response);
     }
 
@@ -211,8 +247,8 @@ public class WeiboClient {
         // printCookie(client);
         // mergeCookie(client);
         // printCookie(client);
-        System.out.println("-------------Login结束--------------");
-        System.out.println("Login结束 response :" + responseBodyAsString);
+        // System.out.println("-------------Login结束--------------");
+        // System.out.println("Login结束 response :" + responseBodyAsString);
         post.releaseConnection();
 
         return getAjaxUrl(responseBodyAsString);
@@ -248,8 +284,8 @@ public class WeiboClient {
         // printCookie(client);
         // mergeCookie(client);
         // printCookie(client);
-        System.out.println("-------------ajaxLogin结束--------------");
-        System.out.println(getByAjax.getResponseBodyAsString());
+        // System.out.println("-------------ajaxLogin结束--------------");
+        // System.out.println(getByAjax.getResponseBodyAsString());
         String responseBodyAsString = getByAjax.getResponseBodyAsString();
         getByAjax.releaseConnection();
 
@@ -271,7 +307,7 @@ public class WeiboClient {
         // System.out.println(responseBodyAsString.indexOf("userid"));
         // System.out.println(responseBodyAsString.substring(start, end));
         String uniqueid = responseBodyAsString.substring(start, end);
-        System.out.println("uniqueid:" + uniqueid);
+        // System.out.println("uniqueid:" + uniqueid);
         return uniqueid;
     }
 
@@ -302,7 +338,7 @@ public class WeiboClient {
      */
     private static void printCookie(HttpClient client) {
         Cookie[] cookies = client.getState().getCookies();
-        System.out.println("目前有" + cookies.length + "条cookie");
+        // System.out.println("目前有" + cookies.length + "条cookie");
         int index = 0;
         for (Cookie cookie : cookies) {
             System.out.println("cookie[" + index + "]:{" + cookie.getName() + "," + cookie.getValue() + "}");

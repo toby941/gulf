@@ -54,10 +54,10 @@ public class HomeController {
         return "你好";
     }
 
-    @At("/test")
+    @At("/weibosearch")
     @GET
-    @Ok("jsp:jsp.front.index")
-    public String homet() {
+    @Ok("jsp:jsp.front.weibosearch")
+    public String weiboSearch() {
         return "你好t";
     }
 }

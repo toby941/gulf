@@ -13,6 +13,13 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.DefaultHttpParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.htmlparser.Node;
+import org.htmlparser.NodeFilter;
+import org.htmlparser.Parser;
+import org.htmlparser.filters.CssSelectorNodeFilter;
+import org.htmlparser.tags.LinkTag;
+import org.htmlparser.util.NodeList;
+import org.htmlparser.visitors.HtmlPage;
 
 public class WeiboClient {
     static final String LOGON_SITE = "login.sina.com.cn";
@@ -44,9 +51,9 @@ public class WeiboClient {
      * 
      * @param client
      * @param homePageUrl
-     * @throws IOException
+     * @throws Exception
      */
-    public static void getHomePage(HttpClient client, String homePageUrl) throws IOException {
+    public static void getHomePage(HttpClient client, String homePageUrl) throws Exception {
         GetMethod get = new GetMethod(homePageUrl);
         try {
             client.executeMethod(get);
@@ -59,6 +66,28 @@ public class WeiboClient {
         }
         String response = get.getResponseBodyAsString();
         System.out.println(response);
+        readByHtml(response);
+    }
+
+    public static void readByHtml(String content) throws Exception {
+        Parser myParser;
+        myParser = Parser.createParser(content, "utf8");
+        HtmlPage visitor = new HtmlPage(myParser);
+        myParser.visitAllNodesWith(visitor);
+        // NodeFilter filter = new TagNameFilter("a");
+        NodeFilter filter =
+                new CssSelectorNodeFilter("div[class=\"person_detail\"] p[class=\"person_name\"] a[uid=*.*]");
+        NodeList allPersonList = visitor.getBody().extractAllNodesThatMatch(filter, true);
+        for (int i = 0; i < allPersonList.size(); i++) {
+            Node node = allPersonList.elementAt(i);
+            if (node instanceof LinkTag) {
+                LinkTag tag = (LinkTag) node;
+                if (tag.getAttribute("title") != null) {
+                    System.out.println("title:" + tag.getAttribute("title") + "   uid:" + tag.getAttribute("uid"));
+                }
+            }
+
+        }
     }
 
     /**

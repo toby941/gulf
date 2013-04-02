@@ -22,6 +22,8 @@ public class WeiboService extends BaseService {
 
     public String login_templete = "{0}?client_id={1}&&response_type=code&redirect_uri={2}";
 
+    public String login_php = "http://login.sina.com.cn/sso/login.php?entry=weisousuo";
+
     /**
      * weibo登陆URL
      * 

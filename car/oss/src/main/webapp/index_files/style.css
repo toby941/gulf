@@ -30,8 +30,8 @@ table{border-collapse:collapse;border-spacing:0;}
 /* Main */
 body{font:16px/1 微软雅黑,Microsoft Yahei,STXihei,arial,sans-serif;color:#333;padding:0 0 20px;background-color:#efece4;-webkit-text-size-adjust:none;}
 h1,h2,h3,h4,nav{font-family:微软雅黑,Microsoft Yahei,STXihei,arial,sans-serif;}
-a{text-decoration:none;color:rgb(40, 135, 255);}
-a:hover,a:focus{text-decoration:underline;color:rgb(40, 135, 255);}
+a{text-decoration:none;color:#61b0e9;}
+a:hover,a:focus{text-decoration:underline;color:#61b0e9;}
 #container{margin:0;}
 .webapp #container{width:749px;}
 /* CSS Document */
@@ -154,7 +154,7 @@ body{-webkit-text-size-adjust:none;
 .category-special #menu-main li.top-level-7 a,
 #menu-main li a:hover{
 	color:#fff;
-	background:rgb(40, 135, 255);
+	background:#61b0e9;
 	}
 
 .searchform{
@@ -268,7 +268,7 @@ body{-webkit-text-size-adjust:none;
 .article{
 	height:auto;
 	width:670px;
-	border-top:1px rgb(40, 135, 255) solid;
+	border-top:1px #61b0e9 solid;
 	margin-top:20px;
 	}
 
@@ -323,8 +323,8 @@ article.article>div.entry{width:490px;float:left;margin-bottom:20px;}
 	margin-left:7px;
 }	
 .wp-pagenavi{text-align:center;font-size:12px;margin-top:30px;clear:both;}
-.wp-pagenavi span,.wp-pagenavi a{background-color:rgb(40, 135, 255);color:#fff;border:1px solid rgb(40, 135, 255);text-decoration: none;padding: 3px 5px;margin: 2px;}
-.wp-pagenavi span.current,.wp-pagenavi a:hover{background-color:transparent;color:rgb(40, 135, 255);}
+.wp-pagenavi span,.wp-pagenavi a{background-color:#61b0e9;color:#fff;border:1px solid #61b0e9;text-decoration: none;padding: 3px 5px;margin: 2px;}
+.wp-pagenavi span.current,.wp-pagenavi a:hover{background-color:transparent;color:#61b0e9;}
 .wp-pagenavi span.current{font-weight: bold;}
 #content_sub{
 	float:right;
@@ -363,7 +363,7 @@ ul#sidebar>li li a{
 	color:#666;
 	text-decoration:none;
 	}
-#siteinfo{clear:both;margin:50px 0;border-top:2px solid rgb(40, 135, 255);}
+#siteinfo{clear:both;margin:50px 0;border-top:2px solid #61b0e9;}
 .links{width:1024px;margin:30px auto;padding:0 10px;}
 .links li{float:left;font-size:12px;width:130px;padding:5px 0;}
 #siteinfo p{	background:url(/images/top_bg.gif) repeat-x;
@@ -416,8 +416,8 @@ p,.entry p,.comment p{margin-bottom:1em;line-height:1.8;}
 .single .post_tag a:nth-child(5n+4){background-color:#cc68cc;}
 .authorpigtwo{
 	margin:30px 0 10px -10px;
-	border-top:2px solid rgb(40, 135, 255);
-	border-bottom:1px solid rgb(40, 135, 255);
+	border-top:2px solid #61b0e9;
+	border-bottom:1px solid #61b0e9;
 	font-size:12px;
 	padding:10px;
 }
@@ -431,19 +431,19 @@ p,.entry p,.comment p{margin-bottom:1em;line-height:1.8;}
 #jiathis_style_24x24{margin:20px 0;}
 .post_nav{margin:20px;font-size:14px;}
 #wumiiDisplayDiv{width:565px;margin:0 auto;}
-.respond{border-top:1px solid rgb(40, 135, 255);padding-top:20px;}
+.respond{border-top:1px solid #61b0e9;padding-top:20px;}
 blockquote{border-left:5px solid #ccc;margin:20px;padding:15px;background-color:#ddd;clear:both;}
 .authorpig_left_p{float:left;margin-right:10px;}
 .authorpig_right{float:left;width:532px;}
 .author_watch{float:right;}
 .authorpig_right_h2{float:left;width:400px;font-weight:bold;font-size:32px;color:#000;}
 .authorpig_right_number{float:left;width:400px;}
-.authorpig_right_number span{font-weight:bold;font-style:italic;color:rgb(40, 135, 255);}
+.authorpig_right_number span{font-weight:bold;font-style:italic;color:#61b0e9;}
 .authorpig_right_p{clear:both;}
 .authorclearspacer{clear:both;}
 #content-header-move{text-align:center;}
-.category-special .t1 .c1{border-bottom:2px rgb(40, 135, 255) solid;}
-.category-special .t2 .c2{border-top:2px rgb(40, 135, 255) solid;}
+.category-special .t1 .c1{border-bottom:2px #61b0e9 solid;}
+.category-special .t2 .c2{border-top:2px #61b0e9 solid;}
 .category-special .t2 .c2 h2{margin-top:0;}
 .category-special .t2 .c2 .c2p1{
 	float:right;
@@ -498,7 +498,7 @@ em,i{font-style:italic;}
 .leiphone-huaqiangbei>div{text-align: center;font-size: 12px;}
 .leiphone-huaqiangbei>div>img{width:108px;height:108px;}
 .hqb_model{display: block;text-align: left;font-size: 14px;color:#333;}
-.hqb_price{font-size: 16px;font-weight: bold;font-style: italic;color:rgb(40, 135, 255);}
+.hqb_price{font-size: 16px;font-weight: bold;font-style: italic;color:#61b0e9;}
 .hqb_date{display: inline-block;margin: 0 10px;}
 .hqb_price_nc{color:#008;}
 .hqb_price_up{color:#800;}

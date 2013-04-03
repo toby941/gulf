@@ -118,7 +118,7 @@ public class CoderUtils {
         String s = "南京";
         showIntArray(string2ASCII(s), " ");
         System.out.println();
-        System.out.println(ascii2String(string2ASCII(s)));
+        System.out.println(ascii2String("\u7cfb\u7edf\u7e41\u5fd9\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5"));
 
     }
 

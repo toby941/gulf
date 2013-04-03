@@ -80,6 +80,7 @@ public class WeiboClient {
             e.printStackTrace();
         }
         String response = get.getResponseBodyAsString();
+        System.out.println(response);
         readBySearchHtml(response);
     }
 
@@ -288,7 +289,8 @@ public class WeiboClient {
         // System.out.println(getByAjax.getResponseBodyAsString());
         String responseBodyAsString = getByAjax.getResponseBodyAsString();
         getByAjax.releaseConnection();
-
+        System.out.println(responseBodyAsString);
+        printCookie(client);
         return getUniqueid(responseBodyAsString);
     }
 

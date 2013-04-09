@@ -103,9 +103,14 @@
     	<artifactId>junit</artifactId>
     	<version>4.10</version>
     </dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>jstl</artifactId>
+    	<version>1.2</version>
+    </dependency>
   </dependencies>
   <build>
-    <finalName>gulf-oss</finalName>
+    <finalName>weimp</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>

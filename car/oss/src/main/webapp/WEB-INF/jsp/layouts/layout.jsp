@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ include file="/WEB-INF/jsp/include/taglibs.jspf"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +44,10 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/">首页</a></li>
-               <li><a href="/weibosearch">微博搜索</a></li>
+               <li><a href="/weibosearch"><c:out value="微博搜索"></c:out></a></li>
               <li><a href="#about">关于</a></li>
               <li><a href="/admin/login">后台</a></li>
+              
               <% if(session.getAttribute("user")!=null){ %>
                  <li><img alt="${ user.screenName}" src="${user.profileImageUrl}" />${user.screenName}</li>
               <% } %>

@@ -15,18 +15,20 @@ import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.mvc.View;
 import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.By;
 import org.nutz.mvc.annotation.DELETE;
+import org.nutz.mvc.annotation.Filters;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.POST;
 import org.nutz.mvc.annotation.Param;
 import org.nutz.mvc.view.JspView;
-import org.nutz.mvc.view.ViewWrapper;
 
 import com.gulf.constants.Constants;
 import com.gulf.domain.Admin;
 import com.gulf.service.AdminService;
 import com.gulf.web.UserContext;
+import com.gulf.web.filter.AuthFilter;
 
 /**
  * AdminModule.java
@@ -36,6 +38,7 @@ import com.gulf.web.UserContext;
 @At("/admin")
 @IocBean
 @InjectName
+@Filters({@By(type = AuthFilter.class)})
 public class AdminController {
     private static final Log log = Logs.getLog(AdminController.class);
 
@@ -54,8 +57,8 @@ public class AdminController {
     public View doLogin(@Param("username") String username, @Param("password") String password, HttpServletRequest req) {
         Admin admin = adminService.login(username, password);
         if (admin != null) {
-        	UserContext uc = new UserContext();
-        	uc.setAdmin(admin);
+            UserContext uc = new UserContext();
+            uc.setAdmin(admin);
             req.getSession().setAttribute(Constants.USER_SESSION_KEY, uc);
             return null;
         }
@@ -73,10 +76,10 @@ public class AdminController {
     }
 
     @At("/main")
-    @Ok("jsp:jsp.admin.test")
+    @Ok("jsp:jsp.admin.main")
     public String main() {
         log.error("报个错看看");
-        return "test";
+        return "main";
     }
 
     @At("/test")

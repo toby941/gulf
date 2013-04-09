@@ -16,9 +16,6 @@ public class WeiboUser implements Serializable {
      */
     private static final long serialVersionUID = -8549776839985206803L;
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
     @Column("ACCESS_TOKER")
     private String accessToken;
     @Column("ADD_TIME")

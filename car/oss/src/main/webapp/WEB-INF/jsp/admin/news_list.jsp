@@ -8,7 +8,7 @@
 <table class="table table-striped table-bordered table-condensed ">
 	        <thead>
           <tr>
-            <th>序号</th>
+            <th>操作</th>
             <th>标题</th>
             <th>简介</th>
             <th>更新时间</th>
@@ -19,13 +19,13 @@
         <c:forEach var="item" items="${obj}" >
         <tr>
             <td>
-         <div class="btn-group open">
+         <div class="btn-group">
           <a class="btn btn-primary" href="#"><i class="icon-ok icon-white"></i><c:out  value="${item.id}"></c:out></a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-pencil"></i> 修改</a></li>
             <li class="divider"></li>
-            <li><a href="#delModal" data-index="${item.id}" data-toggle="modal" data-href="/admin/news/del/${item.id}"><i class="icon-trash"></i> 删除</a></li>
+            <li><a href="/admin/news/del/${item.id}" data-index="${item.id}" data-toggle="modal" data-href="/admin/news/del/${item.id}"><i class="icon-trash"></i> 删除</a></li>
           </ul>
         </div>
             

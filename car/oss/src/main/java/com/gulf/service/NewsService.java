@@ -24,9 +24,25 @@ public class NewsService extends BaseService {
         dao.insert(news);
     }
 
-    public List<News> getList(int pageNumber) {
-        Condition condition =
-                Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+    public News getNews(Integer id) {
+        Condition condition = Cnd.where("id", "=", id);
+        News news = dao.fetch(News.class, condition);
+        if (news != null && status_ok.equals(news.getStatus())) {
+            return news;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public List<News> getList(int pageNumber, boolean includeDelNews) {
+        Condition condition = null;
+        if (includeDelNews) {
+            condition = Cnd.limit().limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+        }
+        else {
+            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+        }
         return dao.query(News.class, condition);
     }
 }

@@ -200,6 +200,7 @@
 			<jdbc.username>remote</jdbc.username>
 			<jdbc.password>123456</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			<host>http://192.168.1.16:9091</host>
 		</properties>
 	</profile>
 	<profile>
@@ -212,6 +213,7 @@
 			<jdbc.username>remote</jdbc.username>
 			<jdbc.password>123456</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			<host>http://weimp.sinaapp.com</host>
 		</properties>
 	</profile>
 	<profile>
@@ -224,6 +226,7 @@
 			<jdbc.username>lm044kyknk</jdbc.username>
 			<jdbc.password>kixj4j4jylj0k1ixh5i15hhyl4jjh5j12ywmk45w</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			<host>http://weimp.sinaapp.com</host>
 		</properties>
 	</profile>
   </profiles>

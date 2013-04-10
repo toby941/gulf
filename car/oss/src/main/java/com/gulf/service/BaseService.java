@@ -19,6 +19,7 @@ import org.nutz.dao.pager.Pager;
 import org.nutz.dao.sql.Sql;
 import org.nutz.dao.util.cri.SqlExpression;
 import org.nutz.dao.util.cri.SqlExpressionGroup;
+import org.nutz.ioc.impl.PropertiesProxy;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 
@@ -31,6 +32,13 @@ import org.nutz.ioc.loader.annotation.IocBean;
 public class BaseService {
     @Inject
     protected Dao dao;
+
+    @Inject
+    protected PropertiesProxy config;
+
+    public String getConfig(String key) {
+        return config.get(key);
+    }
 
     /**
      * 根据Id删除数据

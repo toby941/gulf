@@ -91,15 +91,19 @@ public class News implements Serializable {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
     public void setStatus(Integer status) {
         this.status = status;
     }
+
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }

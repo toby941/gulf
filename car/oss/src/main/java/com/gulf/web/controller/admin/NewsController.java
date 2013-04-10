@@ -36,7 +36,7 @@ public class NewsController {
         if (page == null) {
             page = 0;
         }
-        List<News> list = newsService.getList(page);
+        List<News> list = newsService.getList(page, true);
         return list;
     }
 

@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
+import org.nutz.dao.FieldFilter;
 import org.nutz.ioc.loader.annotation.IocBean;
+import org.nutz.trans.Atom;
 
 import com.gulf.constants.Constants;
 import com.gulf.domain.News;
@@ -44,5 +46,16 @@ public class NewsService extends BaseService {
             condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
         }
         return dao.query(News.class, condition);
+    }
+
+    public void updateNews(final News news) {
+        news.setUpdateTime(Calendar.getInstance().getTime());
+        news.setStatus(status_ok);
+        FieldFilter.locked(News.class, "addTime").run(new Atom() {
+            @Override
+            public void run() {
+                dao.update(news);
+            }
+        });
     }
 }

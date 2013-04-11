@@ -14,7 +14,6 @@
     <meta name="author" content="">
 
     <link href="/style/bootstrap.css" rel="stylesheet">
-    <link href="/style/choosen.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -58,7 +57,6 @@
     </div>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="/js/choose.jquery.js"></script>
 
     <div class="container-fluid">
       <div class="row-fluid">

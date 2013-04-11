@@ -56,4 +56,21 @@ public class NewsController {
         }
         return "main";
     }
+
+    @At("/view/?")
+    @Ok("jsp:jsp.admin.news_view")
+    @GET
+    public News view(int id) {
+        News news = newsService.getNews(id);
+        return news;
+    }
+
+    @At("/edit")
+    @Ok("redirect:/admin/news/list")
+    @POST
+    public void view(@Param("..") News news) {
+        if (news != null) {
+            newsService.updateNews(news);
+        }
+    }
 }

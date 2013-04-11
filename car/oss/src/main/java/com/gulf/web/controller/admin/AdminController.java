@@ -78,7 +78,6 @@ public class AdminController {
     @At("/main")
     @Ok("jsp:jsp.admin.main")
     public String main() {
-        log.error("报个错看看");
         return "main";
     }
 

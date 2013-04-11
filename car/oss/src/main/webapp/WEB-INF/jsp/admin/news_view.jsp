@@ -12,35 +12,35 @@
 <script src="/js/markdown/Markdown.Sanitizer.js"></script>
 
 <div>
-	<form class="form-horizontal" action="/admin/news/add" method="post">
+	<form class="form-horizontal" action="/admin/news/edit" method="post">
 		<fieldset>
 			<legend>新增</legend>
 			<div class="control-group">
 				<label class="control-label" for="input01">标题</label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="input01"
+				<input type="hidden" name="id" value="${obj.id}" ">
+					<input type="text" class="input-xlarge" id="input01" value="${obj.title}"
 						required="required" name="title">
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input01">摘要</label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="input02"
-						placeholder="默认为正文的前140字" name="summary">
+					<input type="text" class="input-xlarge" id="input02" value="${obj.summary}"
+						placeholder="默认为正文的前140字" name="summary" required="required" >
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="select01">类型</label>
+				<label class="control-label" for="select01">类型 </label>
 				<div class="controls">
-					<select id="select01" name="type">
+					<select id="select01" name="type" >
 						<optgroup label="请选择">
-							<option value="1">日记</option>
-							<option value="2">医生/医院</option>
-							<option value="3">用药</option>
-							<option value="4">进食</option>
-							<option value="5">各种玩意</option>
+							<option value="1" <c:if test="${obj.type eq 1}">selected="selected"</c:if>>日记</option>
+							<option value="2" <c:if test="${obj.type eq 2}">selected="selected"</c:if>>医生/医院</option>
+							<option value="3" <c:if test="${obj.type eq 3}">selected="selected"</c:if>>用药</option>
+							<option value="4" <c:if test="${obj.type eq 4}">selected="selected"</c:if>>进食</option>
+							<option value="5" <c:if test="${obj.type eq 5}">selected="selected"</c:if>>各种玩意</option>
 						</optgroup>
-
 					</select>
 				</div>
 			</div>
@@ -48,14 +48,15 @@
 				<label class="control-label" for="fileInput">特色图片</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="input03"
-						placeholder="输入图片URL以 http://开头" name="imgUrl">
+						placeholder="输入图片URL以 http://开头" name="imgUrl" value="${obj.imgUrl}"  >
 				</div>
 			</div>
 
 			<div class="container">
 				<div class="wmd-panel">
 					<div id="wmd-button-bar"></div>
-					<textarea class="wmd-input" id="wmd-input" name="content"></textarea>
+					<textarea class="wmd-input"  id="wmd-input" name="content">${obj.content}</textarea>
+					
 				</div>
 				<div id="wmd-preview" class="wmd-panel wmd-preview" id="previewtext"></div>
 

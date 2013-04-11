@@ -16,6 +16,7 @@ import org.nutz.mvc.annotation.Param;
 
 import com.gulf.domain.News;
 import com.gulf.service.NewsService;
+import com.gulf.util.MarkdownUtils;
 
 /**
  * @author toby hope app 主输出api
@@ -53,8 +54,10 @@ public class HopeApiController {
     @Ok("jsp:jsp.api.news")
     public News view(int id) {
         News news = newsService.getNews(id);
-        if (news == null) {
-
+        if (news != null) {
+            String content = news.getContent();
+            String html = MarkdownUtils.makeHtml(content);
+            news.setContent(html);
         }
         return news;
     }

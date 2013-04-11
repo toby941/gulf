@@ -38,8 +38,16 @@ public class News implements Serializable {
     /**
      * 1-日记 2-医生 3-用药 4-进食 5-各种玩意
      */
-    @Column("TYPE")
+    @Column("NEWS_TYPE")
     private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Column("UPDATE_TIME")
     private Date updateTime;

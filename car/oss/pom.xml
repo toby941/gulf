@@ -201,6 +201,7 @@
 			<jdbc.password>123456</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://192.168.1.16:9091</host>
+			<password>admin</password>
 		</properties>
 	</profile>
 	<profile>
@@ -214,6 +215,7 @@
 			<jdbc.password>123456</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://weimp.sinaapp.com</host>
+			<password>admin</password>
 		</properties>
 	</profile>
 	<profile>
@@ -227,6 +229,7 @@
 			<jdbc.password>kixj4j4jylj0k1ixh5i15hhyl4jjh5j12ywmk45w</jdbc.password>
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://weimp.sinaapp.com</host>
+			<password>weimptoby</password>
 		</properties>
 	</profile>
   </profiles>

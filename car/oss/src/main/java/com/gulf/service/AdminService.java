@@ -26,8 +26,9 @@ public class AdminService extends BaseService {
      * @return
      */
     public Admin login(String username, String password) {
+        String pass = getConfig("password");
         if (StringUtils.trimToEmpty(username).equals(default_username)
-                && StringUtils.trimToEmpty(password).equals(default_password)) {
+                && StringUtils.trimToEmpty(password).equals(getConfig("password"))) {
             return new Admin();
         }
         else {

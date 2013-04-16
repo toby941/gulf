@@ -37,6 +37,29 @@ public class NewsService extends BaseService {
         }
     }
 
+    /**
+     * 客户端输出
+     * 
+     * @param pageNumber
+     * @param type
+     * @return
+     */
+    public List<News> getList4App(int pageNumber, Integer type) {
+        Condition condition = null;
+
+        if (type > 0) {
+            condition =
+                    Cnd.where("status", "=", status_ok).and("news_type", "=", type)
+                            .limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+
+        }
+        else {
+            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+        }
+
+        return dao.query(News.class, condition);
+    }
+
     public List<News> getList(int pageNumber, boolean includeDelNews) {
         Condition condition = null;
         if (includeDelNews) {

@@ -14,6 +14,7 @@ import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
+import com.gulf.constants.ApiConstants;
 import com.gulf.domain.News;
 import com.gulf.service.NewsService;
 import com.gulf.util.MarkdownUtils;
@@ -28,14 +29,14 @@ public class HopeApiController {
     @Inject
     private NewsService newsService;
 
-    @At("/news")
+    @At("/news/category/?")
     @GET
     @Ok("JSON")
-    public List<Map<String, Object>> index(@Param("page") Integer page) {
+    public Map<String, Object> getList(Integer type, @Param("page") Integer page) {
         if (page == null) {
             page = 0;
         }
-        List<News> list = newsService.getList(page, false);
+        List<News> list = newsService.getList4App(page, type);
         List<Map<String, Object>> newsList = new ArrayList<Map<String, Object>>();
         for (News news : list) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -46,7 +47,9 @@ public class HopeApiController {
             map.put("href", newsService.getConfig("host") + "/api/hope/news/" + String.valueOf(news.getId()));
             newsList.add(map);
         }
-        return newsList;
+        Map<String, Object> result = ApiTemplate.fillCommonData();
+        result.put(ApiConstants.RESPONSE, newsList);
+        return result;
     }
 
     @At("/news/?")

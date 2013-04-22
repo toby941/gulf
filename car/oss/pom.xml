@@ -193,6 +193,16 @@
     </resources>
   </build>
   <profiles>
+      <profile>
+		<id>mac</id>
+		<properties>
+			<jdbc.url>jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+			<jdbc.username>root</jdbc.username>
+			<jdbc.password>root</jdbc.password>
+			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			<host>http://127.0.0.1:9091</host>
+		</properties>
+	</profile>
 	<profile>
 		<id>dev</id>
 		<properties>

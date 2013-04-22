@@ -18,15 +18,15 @@
 			<div class="control-group">
 				<label class="control-label" for="input01">标题</label>
 				<div class="controls">
-				<input type="hidden" name="id" value="${obj.id}" ">
-					<input type="text" class="input-xlarge" id="input01" value="${obj.title}"
+				<input type="hidden" name="id" value="${obj.news.id}" ">
+					<input type="text" class="input-xlarge" id="input01" value="${obj.news.title}"
 						required="required" name="title">
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input01">摘要</label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="input02" value="${obj.summary}"
+					<input type="text" class="input-xlarge" id="input02" value="${obj.news.summary}"
 						placeholder="默认为正文的前140字" name="summary" required="required" >
 				</div>
 			</div>
@@ -35,11 +35,9 @@
 				<div class="controls">
 					<select id="select01" name="type" >
 						<optgroup label="请选择">
-							<option value="1" <c:if test="${obj.type eq 1}">selected="selected"</c:if>>日记</option>
-							<option value="2" <c:if test="${obj.type eq 2}">selected="selected"</c:if>>医生/医院</option>
-							<option value="3" <c:if test="${obj.type eq 3}">selected="selected"</c:if>>用药</option>
-							<option value="4" <c:if test="${obj.type eq 4}">selected="selected"</c:if>>进食</option>
-							<option value="5" <c:if test="${obj.type eq 5}">selected="selected"</c:if>>各种玩意</option>
+						<c:forEach var="item" items="${obj.types}" varStatus="s">
+						<option value="${s.index}"  <c:if test="${obj.news.type eq s.index}">selected="selected"</c:if>>${item}</option>
+						</c:forEach>
 						</optgroup>
 					</select>
 				</div>
@@ -48,14 +46,14 @@
 				<label class="control-label" for="fileInput">特色图片</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="input03"
-						placeholder="输入图片URL以 http://开头" name="imgUrl" value="${obj.imgUrl}"  >
+						placeholder="输入图片URL以 http://开头" name="imgUrl" value="${obj.news.imgUrl}"  >
 				</div>
 			</div>
 
 			<div class="container">
 				<div class="wmd-panel">
 					<div id="wmd-button-bar"></div>
-					<textarea class="wmd-input"  id="wmd-input" name="content">${obj.content}</textarea>
+					<textarea class="wmd-input"  id="wmd-input" name="content">${obj.news.content}</textarea>
 					
 				</div>
 				<div id="wmd-preview" class="wmd-panel wmd-preview" id="previewtext"></div>

@@ -4,6 +4,7 @@
 package com.gulf.service;
 
 import org.apache.commons.lang.StringUtils;
+import org.nutz.ioc.loader.annotation.IocBean;
 
 import com.gulf.domain.Admin;
 
@@ -12,6 +13,7 @@ import com.gulf.domain.Admin;
  * 
  * @author ryenlea
  */
+@IocBean
 public class AdminService extends BaseService {
 
     private static String default_username = "admin";

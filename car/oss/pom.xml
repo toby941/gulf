@@ -202,6 +202,12 @@
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://192.168.1.16:9091</host>
 			<password>admin</password>
+			<env>dev</env>
+			<upyunBucketname>guoxiaomei</upyunBucketname>
+			<upyunUsername>baojun</upyunUsername>
+			<upyunPassword>sonic333</upyunPassword>
+			<upyunDebug>true</upyunDebug>
+			<upyunImageHost>http://guoxiaomei.b0.upaiyun.com</upyunImageHost>			
 		</properties>
 	</profile>
 	<profile>
@@ -216,6 +222,12 @@
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://weimp.sinaapp.com</host>
 			<password>admin</password>
+			<env>dev</env>
+			<upyunBucketname>guoxiaomei</upyunBucketname>
+			<upyunUsername>baojun</upyunUsername>
+			<upyunPassword>sonic333</upyunPassword>
+			<upyunDebug>true</upyunDebug>
+			<upyunImageHost>http://guoxiaomei.b0.upaiyun.com</upyunImageHost>		
 		</properties>
 	</profile>
 	<profile>
@@ -230,6 +242,12 @@
 			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			<host>http://weimp.sinaapp.com</host>
 			<password>weimptoby</password>
+			<env>product</env>
+			<upyunBucketname>guoxiaomei</upyunBucketname>
+			<upyunUsername>baojun</upyunUsername>
+			<upyunPassword>sonic333</upyunPassword>
+			<upyunDebug>false</upyunDebug>
+			<upyunImageHost>http://guoxiaomei.b0.upaiyun.com</upyunImageHost>		
 		</properties>
 	</profile>
   </profiles>

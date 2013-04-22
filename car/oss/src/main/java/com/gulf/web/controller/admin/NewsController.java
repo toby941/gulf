@@ -1,6 +1,8 @@
 package com.gulf.web.controller.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.nutz.ioc.annotation.InjectName;
 import org.nutz.ioc.loader.annotation.Inject;
@@ -15,6 +17,7 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.POST;
 import org.nutz.mvc.annotation.Param;
 
+import com.gulf.constants.Constants;
 import com.gulf.domain.News;
 import com.gulf.service.NewsService;
 import com.gulf.web.filter.AuthFilter;
@@ -43,8 +46,8 @@ public class NewsController {
     @At("/add")
     @Ok("jsp:jsp.admin.news_add")
     @GET
-    public String add() {
-        return "main";
+    public String[] add() {
+        return Constants.NEWS_TYPES;
     }
 
     @At("/add")
@@ -60,9 +63,13 @@ public class NewsController {
     @At("/view/?")
     @Ok("jsp:jsp.admin.news_view")
     @GET
-    public News view(int id) {
+    public Map<String, Object> view(int id) {
         News news = newsService.getNews(id);
-        return news;
+        String[] types = Constants.NEWS_TYPES;
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("news", news);
+        result.put("types", types);
+        return result;
     }
 
     @At("/edit")

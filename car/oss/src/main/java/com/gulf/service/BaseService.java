@@ -40,6 +40,11 @@ public class BaseService {
         return config.get(key);
     }
 
+    public boolean isDev() {
+        String env = config.get("env");
+        return "dev".equalsIgnoreCase(env);
+    }
+
     /**
      * 根据Id删除数据
      * 

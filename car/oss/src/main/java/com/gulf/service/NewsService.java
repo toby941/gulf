@@ -50,11 +50,11 @@ public class NewsService extends BaseService {
         if (type > 0) {
             condition =
                     Cnd.where("status", "=", status_ok).and("news_type", "=", type)
-                            .limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+                            .limit(pageNumber, Constants.PAGE_SIZE).desc("update_time");
 
         }
         else {
-            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).desc("update_time");
         }
 
         return dao.query(News.class, condition);

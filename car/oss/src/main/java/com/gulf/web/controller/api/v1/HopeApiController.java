@@ -29,6 +29,13 @@ public class HopeApiController {
     @Inject
     private NewsService newsService;
 
+    /**
+     * 按分类获取news列表 json数据
+     * 
+     * @param type 分类 0-首页 按时间添加时间排序
+     * @param page
+     * @return
+     */
     @At("/news/category/?")
     @GET
     @Ok("JSON")

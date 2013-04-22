@@ -10,7 +10,9 @@
 <script src="/js/markdown/Markdown.Converter.js"></script>
 <script src="/js/markdown/Markdown.Editor.js"></script>
 <script src="/js/markdown/Markdown.Sanitizer.js"></script>
-
+<script type="text/javascript" src="/js/uploader/uploadify.v2.1.4.min.js"></script> 
+<script type="text/javascript" src="/js/uploader/swfobject.js"></script> 
+<script type="text/javascript" src="/js/uploader/uploadFile.js"></script> 
 <div>
 	<form class="form-horizontal" action="/admin/news/add" method="post">
 		<fieldset>
@@ -34,11 +36,9 @@
 				<div class="controls">
 					<select id="select01" name="type">
 						<optgroup label="请选择">
-							<option value="1">日记</option>
-							<option value="2">医生/医院</option>
-							<option value="3">用药</option>
-							<option value="4">进食</option>
-							<option value="5">各种玩意</option>
+						<c:forEach var="item" items="${obj}" varStatus="s">
+						<option value="${s.index}">${item }</option>
+						</c:forEach>
 						</optgroup>
 
 					</select>
@@ -46,9 +46,12 @@
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="fileInput">特色图片</label>
+				<div class="controls hide"  id="pimgdiv">
+				   <img alt="预览" src=""  id="pimg"/>
+				</div>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="input03"
-						placeholder="输入图片URL以 http://开头" name="imgUrl">
+						placeholder="输入图片URL以 http://开头" name="imgUrl"> <input type="file" id="upload"/>
 				</div>
 			</div>
 
@@ -78,6 +81,13 @@
 		var converter1 = Markdown.getSanitizingConverter();
 		var editor1 = new Markdown.Editor(converter1);
 		editor1.run();
+		upLoadFileInit("#upload", "/upload", "*.png;*.jpg", false, 5, '*.png;*.jpg', 1, 800 * 1024, null, "", upDone,  null,null,null);
 	})();
+	
+	function upDone(event,queueID,fileObj,response){
+		 $('#input03').val(response);
+		 $('#pimg').attr("src",response+"!128?t="+Math.random());
+		 $('#pimgdiv').show();
+	}
 	//$('.textarea').wysihtml5();
 </script>

@@ -1,3 +1,7 @@
+function makeHtml(html) {  
+	var converter = new Markdown.Converter();
+    return converter.makeHtml(html);  
+}  
 var Markdown;
 
 if (typeof exports === "object" && typeof require === "function") // we're in a CommonJS (e.g. Node.js) module

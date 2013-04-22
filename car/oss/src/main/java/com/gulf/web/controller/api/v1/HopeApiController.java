@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.log4j.Logger;
 import org.nutz.ioc.annotation.InjectName;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
@@ -26,6 +27,8 @@ import com.gulf.util.MarkdownUtils;
 @InjectName
 @At("/api/hope")
 public class HopeApiController {
+
+    private final Logger log = Logger.getLogger(HopeApiController.class);
     @Inject
     private NewsService newsService;
 
@@ -68,7 +71,24 @@ public class HopeApiController {
             String content = news.getContent();
             String html = MarkdownUtils.makeHtml(content);
             news.setContent(html);
+
         }
         return news;
+    }
+
+    @At("/newss/?")
+    @GET
+    @Ok("raw")
+    public String views(int id) {
+        News news = newsService.getNews(id);
+
+        if (news != null) {
+            String content = news.getContent();
+            String html = MarkdownUtils.makeHtml(content);
+            log.error("before: " + content + " ,after: " + html);
+            news.setContent(html);
+
+        }
+        return news.getContent();
     }
 }

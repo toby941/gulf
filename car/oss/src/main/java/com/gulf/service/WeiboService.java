@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 import java.util.Calendar;
 
 import org.nutz.dao.Cnd;
-import org.nutz.ioc.loader.annotation.IocBean;
 
 import weibo4j.Account;
 import weibo4j.Oauth;
@@ -17,7 +16,7 @@ import weibo4j.util.WeiboConfig;
 
 import com.gulf.domain.WeiboUser;
 
-@IocBean
+// @IocBean
 public class WeiboService extends BaseService {
 
     public String login_templete = "{0}?client_id={1}&&response_type=code&redirect_uri={2}";

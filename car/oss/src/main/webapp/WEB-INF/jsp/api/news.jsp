@@ -33,7 +33,7 @@
                                 发表于 <abbr class="timeago" ><fmt:formatDate value="${obj.addTime}"  pattern="yyyy-MM-dd HH:mm:ss" type="both"/></abbr>
               </div>
               <div class="mainContent sep-10">
-              ${obj.content }
+              ${obj.contentHtml}
               </div>
  </c:if>
  <c:if test="${empty obj }">

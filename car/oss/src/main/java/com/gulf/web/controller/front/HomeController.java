@@ -3,13 +3,9 @@
  */
 package com.gulf.web.controller.front;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.nutz.ioc.annotation.InjectName;
-import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.GET;
@@ -31,16 +27,16 @@ import com.gulf.service.WeiboService;
 @IocBean
 @InjectName
 public class HomeController {
-    @Inject
+    // @Inject
     private WeiboService weiboService;
 
     @At("/")
     @GET
     @Ok("jsp:jsp.front.photo")
-    public Map<String, Object> home() {
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("weibologin", weiboService.getLoginUrl());
-        return model;
+    public void home() {
+        // Map<String, Object> model = new HashMap<String, Object>();
+        // model.put("weibologin", weiboService.getLoginUrl());
+        // return model;
     }
 
     @At("/oauth2return")

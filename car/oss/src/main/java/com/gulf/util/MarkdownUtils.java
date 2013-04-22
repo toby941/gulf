@@ -9,8 +9,10 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
 public class MarkdownUtils {
+    private final static Logger log = Logger.getLogger(MarkdownUtils.class);
 
     public static Invocable getInvocable(String path) throws ScriptException, IOException {
         ScriptEngineManager manager = new ScriptEngineManager();
@@ -32,16 +34,31 @@ public class MarkdownUtils {
         }
     }
 
+    public static Invocable getInvocableFromHttp(String url) throws ScriptException, IOException {
+        ScriptEngineManager manager = new ScriptEngineManager();
+
+        ScriptEngine engine = manager.getEngineByName("javascript");
+        String content = HttpUtils.doGetRequest(url);
+        engine.eval(content);
+        if (engine instanceof Invocable) {
+            Invocable invoke = (Invocable) engine;
+            return invoke;
+        }
+        else {
+            return null;
+        }
+    }
+
     public static String makeHtml(String source) {
         String result = StringUtils.EMPTY;
         try {
-            String jsFileName = "/src/main/java/com/gulf/util/Markdown.Converter.js";
-            Invocable invoke = getInvocable(jsFileName);
-
+            String http = "http://weimp.sinaapp.com/js/markdown/Markdown.Converter.js";
+            Invocable invoke = getInvocableFromHttp(http);
             result = invoke.invokeFunction("makeHtml", source).toString();
         }
         catch (Exception e) {
             e.printStackTrace();
+            log.error("makeHtml error", e);
         }
         return result;
     }

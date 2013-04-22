@@ -834,6 +834,8 @@
             elapsedTime = currTime - prevTime;
 
             pushPreviewHtml(text);
+            //add customcallback
+            $('.previewtexthidden').val(text);
         };
 
         // setTimeout is already used.  Used as an event listener.

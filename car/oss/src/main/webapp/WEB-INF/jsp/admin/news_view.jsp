@@ -57,7 +57,7 @@
 					
 				</div>
 				<div id="wmd-preview" class="wmd-panel wmd-preview" id="previewtext"></div>
-
+                <input class="previewtexthidden" type="hidden" name="contentHtml">
 				<%--     <div class="controls">
               <textarea class="textarea" name="content" placeholder="Enter text ..." style="width: 810px; height: 400px"></textarea>
             </div>

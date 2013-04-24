@@ -11,6 +11,7 @@ import org.nutz.ioc.annotation.InjectName;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.Fail;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
@@ -65,13 +66,17 @@ public class HopeApiController {
     @At("/news/?")
     @GET
     @Ok("jsp:jsp.api.news")
+    @Fail("jsp:jsp.api.error")
     public News view(int id) {
         News news = newsService.getNews(id);
-        if (news != null) {
-            String content = news.getContent();
-            String html = MarkdownUtils.makeHtml(content);
-            news.setContent(html);
-
+        // if (news != null) {
+        // String content = news.getContent();
+        // String html = MarkdownUtils.makeHtml(content);
+        // news.setContent(html);
+        //
+        // }
+        if (news == null) {
+            throw new IllegalArgumentException();
         }
         return news;
     }

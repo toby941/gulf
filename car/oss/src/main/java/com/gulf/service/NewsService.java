@@ -63,10 +63,10 @@ public class NewsService extends BaseService {
     public List<News> getList(int pageNumber, boolean includeDelNews) {
         Condition condition = null;
         if (includeDelNews) {
-            condition = Cnd.limit().limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+            condition = Cnd.limit().limit(pageNumber, Constants.PAGE_SIZE).desc("update_time");
         }
         else {
-            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).asc("update_time");
+            condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).desc("update_time");
         }
         return dao.query(News.class, condition);
     }

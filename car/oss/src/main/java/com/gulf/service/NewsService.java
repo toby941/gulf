@@ -17,6 +17,7 @@ import com.gulf.domain.News;
 public class NewsService extends BaseService {
 
     public final static Integer status_ok = 1;
+    public final static Integer status_del = 0;
 
     public void addNews(News news) {
         Date time = Calendar.getInstance().getTime();
@@ -56,7 +57,6 @@ public class NewsService extends BaseService {
         else {
             condition = Cnd.where("status", "=", status_ok).limit(pageNumber, Constants.PAGE_SIZE).desc("update_time");
         }
-
         return dao.query(News.class, condition);
     }
 
@@ -80,5 +80,13 @@ public class NewsService extends BaseService {
                 dao.update(news);
             }
         });
+    }
+
+    public void delNews(Integer id) {
+        News news = dao.fetch(News.class, Cnd.where("ID", "=", id));
+        if (news != null) {
+            news.setStatus(status_del);
+            dao.update(news);
+        }
     }
 }

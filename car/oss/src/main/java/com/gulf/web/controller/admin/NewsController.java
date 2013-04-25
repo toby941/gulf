@@ -80,4 +80,12 @@ public class NewsController {
             newsService.updateNews(news);
         }
     }
+
+    @At("/del/?")
+    @Ok("redirect:/admin/news/list")
+    @GET
+    public void dej(int id) {
+        newsService.delNews(id);
+    }
+
 }

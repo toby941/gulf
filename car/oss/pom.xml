@@ -108,6 +108,11 @@
     	<artifactId>jstl</artifactId>
     	<version>1.2</version>
     </dependency>
+    <dependency>
+    	<groupId>com.caucho</groupId>
+    	<artifactId>hessian</artifactId>
+    	<version>4.0.7</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>weimp</finalName>

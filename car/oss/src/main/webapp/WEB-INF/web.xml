@@ -17,6 +17,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+      <servlet>
+         <servlet-name>hello</servlet-name>
+         <servlet-class>com.yogapppackage.BasicService</servlet-class>
+    </servlet>
+      <servlet-mapping>
+          <servlet-name>hello</servlet-name>
+          <url-pattern>/hello.do</url-pattern>
+      </servlet-mapping>
+
+
     <filter>
         <filter-name>nutz</filter-name>
         <filter-class>org.nutz.mvc.NutFilter</filter-class>
@@ -36,5 +46,8 @@
       <dispatcher>REQUEST</dispatcher>
       <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
+    
+
 
 </web-app>

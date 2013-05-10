@@ -18,12 +18,12 @@
     </filter-mapping>
 
       <servlet>
-         <servlet-name>hello</servlet-name>
+         <servlet-name>api</servlet-name>
          <servlet-class>com.yogapppackage.BasicService</servlet-class>
     </servlet>
       <servlet-mapping>
-          <servlet-name>hello</servlet-name>
-          <url-pattern>/hello.do</url-pattern>
+          <servlet-name>api</servlet-name>
+          <url-pattern>/api.do</url-pattern>
       </servlet-mapping>
 
 

@@ -3,6 +3,8 @@ package com.yogapppackage;
 import net.sf.json.JSONObject;
 
 /**
+ * http://www.cnblogs.com/over140/archive/2010/07/30/1788563.html
+ * 
  * @author xuanrui company
  * @parameter Map parameters from client
  * @return Map results to client 该接口定义客户端能够访问的方法
@@ -33,7 +35,7 @@ public interface BasicAPI {
      * 
      * @return
      */
-    public JSONObject SelectAllCepActive();
+    public JSONObject SelectAllCepActive(String userid);
 
     /**
      * CEP单个活动详情查询<br/>
@@ -49,7 +51,7 @@ public interface BasicAPI {
      * @param cepid
      * @return
      */
-    public JSONObject SelectTheOneCepActive(String cepid);
+    public JSONObject SelectTheOneCepActive(String cepid, String userid);
 
     /**
      * CEP预约报名<br/>

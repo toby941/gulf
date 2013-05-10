@@ -19,9 +19,9 @@ public class BasicService extends HessianServlet implements BasicAPI {
     }
 
     @Override
-    public JSONObject SelectAllCepActive() {
+    public JSONObject SelectAllCepActive(String userid) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("cepid", "某某活动1");
             map.put("ceptitle", "活动标题1");
@@ -31,7 +31,8 @@ public class BasicService extends HessianServlet implements BasicAPI {
             map.put("joinnum", "活动标题1");
             map.put("signupnum", "活动标题1");
             map.put("commentnum", "活动标题1");
-
+            map.put("ceppicture", "http://guoxiaomei.b0.upaiyun.com/p/" + (2 + i) + ".jpg");
+            map.put("flag", "1");
             Map<String, Object> commentdetail = new HashMap<String, Object>();
             List<Map<String, Object>> commentList = new ArrayList<Map<String, Object>>();
             for (int j = 0; j < 8; j++) {
@@ -52,8 +53,12 @@ public class BasicService extends HessianServlet implements BasicAPI {
         return jsonObject;
     }
 
+    /**
+     * http://guoxiaomei.b0.upaiyun.com/p/2.jpg http://guoxiaomei.b0.upaiyun.com/p/3.jpg
+     * http://guoxiaomei.b0.upaiyun.com/p/4.jpg
+     */
     @Override
-    public JSONObject SelectTheOneCepActive(String cepid) {
+    public JSONObject SelectTheOneCepActive(String cepid, String userid) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("cepid", "某某活动1");
         map.put("ceptitle", "活动标题1");
@@ -63,7 +68,8 @@ public class BasicService extends HessianServlet implements BasicAPI {
         map.put("joinnum", "活动标题1");
         map.put("signupnum", "活动标题1");
         map.put("commentnum", "活动标题1");
-
+        map.put("flag", "1");
+        map.put("ceppicture", "http://guoxiaomei.b0.upaiyun.com/p/2.jpg");
         Map<String, Object> commentdetail = new HashMap<String, Object>();
         List<Map<String, Object>> commentList = new ArrayList<Map<String, Object>>();
         for (int j = 0; j < 8; j++) {

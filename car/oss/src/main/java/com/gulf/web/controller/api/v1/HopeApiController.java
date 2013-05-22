@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.nutz.ioc.annotation.InjectName;
@@ -43,9 +45,10 @@ public class HopeApiController {
     @At("/news/category/?")
     @GET
     @Ok("JSON")
-    public Map<String, Object> getList(Integer type, @Param("page") Integer page) {
-        if (page == null) {
-            page = 0;
+    public Map<String, Object> getList(Integer type, @Param("page") String pageStr) {
+        Integer page = 1;
+        if (StringUtils.isNotEmpty(pageStr) && NumberUtils.isNumber(pageStr)) {
+            page = Integer.valueOf(pageStr);
         }
         List<News> list = newsService.getList4App(page, type);
         List<Map<String, Object>> newsList = new ArrayList<Map<String, Object>>();

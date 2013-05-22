@@ -35,12 +35,17 @@ public class NewsController {
 
     @At("/list")
     @Ok("jsp:jsp.admin.news_list")
-    public List<News> list(@Param("page") Integer page) {
+    public Map<String, Object> list(@Param("page") Integer page) {
+        Map<String, Object> result = new HashMap<String, Object>();
         if (page == null) {
             page = 0;
         }
         List<News> list = newsService.getList(page, true);
-        return list;
+        Integer count = newsService.getTotalCount();
+        result.put("list", list);
+        result.put("count", count);
+        result.put("page", page);
+        return result;
     }
 
     @At("/add")

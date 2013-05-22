@@ -31,7 +31,8 @@ public class BasicService extends HessianServlet implements BasicAPI {
             map.put("joinnum", "活动标题1");
             map.put("signupnum", "活动标题1");
             map.put("commentnum", "活动标题1");
-            map.put("ceppicture", "http://guoxiaomei.b0.upaiyun.com/p/" + (2 + i) + ".jpg");
+            // map.put("ceppicture", "http://guoxiaomei.b0.upaiyun.com/p/" + (2 + i) + ".jpg");
+            map.put("ceppicture", "http://192.168.1.16:9091/images/loginbtn_02.png");
             map.put("flag", "1");
             Map<String, Object> commentdetail = new HashMap<String, Object>();
             List<Map<String, Object>> commentList = new ArrayList<Map<String, Object>>();
@@ -69,13 +70,15 @@ public class BasicService extends HessianServlet implements BasicAPI {
         map.put("signupnum", "活动标题1");
         map.put("commentnum", "活动标题1");
         map.put("flag", "1");
-        map.put("ceppicture", "http://guoxiaomei.b0.upaiyun.com/p/2.jpg");
+        // map.put("ceppictureone", "http://guoxiaomei.b0.upaiyun.com/p/2.jpg");
+        map.put("ceppictureone", "http://192.168.1.16:9091/images/loginbtn_02.png");
         Map<String, Object> commentdetail = new HashMap<String, Object>();
         List<Map<String, Object>> commentList = new ArrayList<Map<String, Object>>();
         for (int j = 0; j < 8; j++) {
             commentdetail.put("cepid", "某某活动1");
             commentdetail.put("commentid", "某评论者ID1");
-            commentdetail.put("picturehttp", "http://tp2.sinaimg.cn/1813080181/180/5641600999/1");
+            // commentdetail.put("picturehttp", "http://tp2.sinaimg.cn/1813080181/180/5641600999/1");
+            commentdetail.put("picturehttp", "http://192.168.1.16:9091/images/loginbtn_02.png");
             commentdetail.put("commentname", "JOHN");
             commentdetail.put("commenttime", "20130818090000");
             commentdetail.put("commentconent", "评论内容1");
@@ -134,6 +137,9 @@ public class BasicService extends HessianServlet implements BasicAPI {
             map.put("ceptime", "20130818090000");
             map.put("cepplace", "某地点1");
             map.put("signuptime", "20130818090000");
+            // map.put("ceppictureone", "http://guoxiaomei.b0.upaiyun.com/p/2.jpg");
+            map.put("ceppictureone", "http://192.168.1.16:9091/images/loginbtn_02.png");
+            map.put("flag", "0");
             list.add(map);
         }
         JSONArray array = JSONArray.fromObject(list);

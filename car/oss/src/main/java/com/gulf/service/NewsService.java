@@ -60,6 +60,11 @@ public class NewsService extends BaseService {
         return dao.query(News.class, condition);
     }
 
+    public Integer getTotalCount() {
+        Condition condition = Cnd.where("status", "=", status_ok);
+        return dao.count(News.class, condition);
+    }
+
     public List<News> getList(int pageNumber, boolean includeDelNews) {
         Condition condition = null;
         if (includeDelNews) {

@@ -21,6 +21,7 @@ import com.gulf.constants.Constants;
 import com.gulf.domain.News;
 import com.gulf.service.NewsService;
 import com.gulf.web.filter.AuthFilter;
+import com.gulf.web.tag.PageTag;
 
 @IocBean
 @InjectName
@@ -35,16 +36,16 @@ public class NewsController {
 
     @At("/list")
     @Ok("jsp:jsp.admin.news_list")
-    public Map<String, Object> list(@Param("page") Integer page) {
+    public Map<String, Object> list(@Param("page") Integer page) throws Exception {
         Map<String, Object> result = new HashMap<String, Object>();
         if (page == null) {
-            page = 0;
+            page = 1;
         }
         List<News> list = newsService.getList(page, true);
         Integer count = newsService.getTotalCount();
         result.put("list", list);
-        result.put("count", count);
-        result.put("page", page);
+        String tag = PageTag.getHtml("/admin/news/list?page=PAGENUM", page, count, Constants.PAGE_SIZE);
+        result.put("tag", tag);
         return result;
     }
 

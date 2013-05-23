@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ include file="/WEB-INF/jsp/include/taglibs.jspf"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ include file="/WEB-INF/jsp/include/taglibs.jspf"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

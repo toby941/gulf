@@ -46,7 +46,30 @@ public class PageTag extends TagSupport {
     //
     public static HashMap<String, String> cnConstantsMap;
     public static HashMap<String, String> jpConstantsMap;
+
     //
+
+    public static String getHtml(String href, Integer currentPage, Integer totalRecord, Integer pageSize)
+            throws Exception {
+        PageTag tag = new PageTag();
+        tag.initTag();
+        tag.setCurrentPage(currentPage);
+        tag.setHref(href);
+        tag.setTotalRecord(String.valueOf(totalRecord));
+        tag.setPageSize(pageSize);
+        tag.setHtmlIntoStringBuffer();
+        return tag.buffer.toString();
+    }
+
+    public static void main(String[] args) {
+        PageTag tag = new PageTag();
+        tag.setCurrentPage(1);
+        tag.setHref("www.aaa.com?admin/news/list?page=PAGENUM");
+        tag.setTotalRecord("200");
+        tag.setPageSize(20);
+        tag.setHtmlIntoStringBuffer();
+        System.out.println(tag.buffer.toString());
+    }
     static {
         cnConstantsMap = new HashMap<String, String>();
         cnConstantsMap.put("previousPage", PREVIOUS_PAGE_CN);
@@ -61,7 +84,7 @@ public class PageTag extends TagSupport {
     }
 
     //
-    private StringBuffer buffer = new StringBuffer(0);
+    public StringBuffer buffer = new StringBuffer(0);
     //
     private String previousPage = "";
     private String nextPage = "";

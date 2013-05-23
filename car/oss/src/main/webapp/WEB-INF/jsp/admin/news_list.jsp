@@ -42,7 +42,7 @@
         </c:forEach>
         </tbody>
       </table>
-     <oss:pagination pageSize="20" href="/admin/news/list?page=PAGENUM"  totalRecord="${obj.count}" currentPage="${obj.page}"></oss:pagination>	 
+    ${obj.tag}
   <div id="delModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

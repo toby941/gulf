@@ -28,9 +28,9 @@
     <script src="/js/bootstrap.js"></script>
 <div class="body entry-content span8 krContent">
     <c:if test="${not empty obj }">
-              <h1 class="entry-title sep10"><c:out value="${obj.title }"></c:out> </h1>
-              <div class="sep-10 magb10 tohide gray">
-                                发表于 <abbr class="timeago" ><fmt:formatDate value="${obj.addTime}"  pattern="yyyy-MM-dd HH:mm:ss" type="both"/></abbr>
+              <h3 class="entry-title sep10 "><c:out value="${obj.title }"></c:out> </h3>
+              <div class="muted" >
+                               发表于 <abbr class="timeago muted" ><fmt:formatDate value="${obj.addTime}"  pattern="yyyy-MM-dd HH:mm:ss" type="both"/></abbr>
               </div>
               <div class="mainContent sep-10">
               ${obj.contentHtml}

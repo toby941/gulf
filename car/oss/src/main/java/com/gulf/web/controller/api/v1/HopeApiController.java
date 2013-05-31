@@ -57,7 +57,10 @@ public class HopeApiController {
             map.put("title", news.getTitle());
             map.put("summary", news.getSummary());
             map.put("time", DateFormatUtils.format(news.getAddTime(), "yyyy-MM-dd"));
-            map.put("img", news.getImgUrl());
+            // 列表显示缩略图
+            if (StringUtils.isNotEmpty(news.getImgUrl())) {
+                map.put("img", news.getImgUrl() + "!100");
+            }
             map.put("href", newsService.getConfig("host") + "/api/hope/news/" + String.valueOf(news.getId()));
             newsList.add(map);
         }
